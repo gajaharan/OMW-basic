@@ -1,0 +1,43 @@
+{
+  "name": "5-day-weather-app",
+  "version": "0.0.1",
+  "description": "AngularJS 5 day weather forecast app using OpenWeatherMap API calls",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gajaharan/OMW-basic.git"
+  },
+  "keywords": [
+    "test",
+    "demo"
+  ],
+  "author": {
+    "name": "Gajaharan Satkunanandan",
+    "email": "gajaharan@gmail.com"
+  },
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/gajaharan/OMW-basic/issues"
+  },
+  "homepage": "https://github.com/gajaharan/OMW-basic",
+  "dependencies": {
+    "bower": "^1.5.2",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-filter": "^3.0.1",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp-webserver": "^0.9.1",
+    "main-bower-files": "^2.9.0",
+    "gulp-watch": "^4.3.4",
+    "karma": "^0.12.37",
+    "phantomjs" : "*",
+    "karma" : "*",
+    "karma-junit-reporter" : "*",
+    "karma-jasmine" : "*",
+    "karma-ng-scenario" : "*", 
+    "karma-phantomjs-launcher": "^0.1.4"          
+  }
+}
