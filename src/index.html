@@ -12,39 +12,39 @@
 
 <body ng-app="weatherApp">
 
-<div class="container" ng-controller="ForecastCtrl">
+<div class="container" ng-controller="ForecastCtrl as weather">
     <div class="search-weather">
         <div class="row">
             <div class="col-xs-12">
                 <div>
                     <form role="form">
                         <span>
-                            <input type="text" class="search-input" id="location" placeholder="Your city name" ng-model="location">
+                            <input type="text" class="search-input" id="location" placeholder="Your city name" ng-model="weather.location">
                         </span>
-                        <button type="submit" class="search-btn" ng-click="getForecastByLocation(location)">Search</button>
-                        <span  class="information" ng-show="message">{{message}}</span>
+                        <button type="submit" class="search-btn" ng-click="weather.getForecastByLocation()">Search</button>
+                        <span  class="information" ng-show="weather.message">{{weather.message}}</span>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="weather-data" ng-show="validData">
+    <div class="weather-data" ng-show="weather.validData">
         <div class="row">
             <div class="col-sm-12">
                 <div class="">
                     <h4>
-                        Next 5 day forescast for {{forecast.city.name}}
+                        Next 5 day forescast for {{weather.forecast.city.name}}
                     </h4>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12" ng-repeat="dailyForecast in forecast.list">
+            <div class="col-sm-12" ng-repeat="dailyForecast in weather.forecast.list">
 				<div class="weather-container">
 				    <div class="info-body">
-				        <div class="day-title">{{parseDate(dailyForecast.dt)}}</div>
-				        <img class="space" src="{{getIconUrl(dailyForecast.weather[0].icon)}}" />
+				        <div class="day-title">{{weather.parseDate(dailyForecast.dt)}}</div>
+				        <img class="space" src="{{weather.getIconUrl(dailyForecast.weather[0].icon)}}" />
 				        <div class="space">{{dailyForecast.temp.day | number: 1}}&#176;C</div>
 				        <div class="space">{{dailyForecast.weather[0].description}}</div>
 				        <div class="space">H: {{dailyForecast.temp.max}}&#176;C&nbsp;</div>
