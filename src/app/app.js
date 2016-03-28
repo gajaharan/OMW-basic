@@ -1,5 +1,5 @@
-var app = angular.module('WeatherApp', [])
-.controller('forecastCtrl', ['$scope','$filter', 'openWeatherMap', function($scope,$filter, openWeatherMap) {
+var app = angular.module('WeatherApp', []);
+app.controller('forecastController', ['$scope','$filter', 'openWeatherMapService', function($scope,$filter, openWeatherMapService) {
     var PROVIDE_LOC = '! Please provide a location';
     var SERVER_ERROR = '! Unable to get weather information. Please try again later.'
     $scope.message = '';
@@ -12,7 +12,6 @@ var app = angular.module('WeatherApp', [])
     };
     // parse the date to only show day name
     $scope.parseDate = function (date) {
-    	console.log(date);
       if (new Date(date*1000).setHours(0,0,0,0) === new Date().setHours(0,0,0,0)) {
         return "Today"
       }
@@ -21,38 +20,37 @@ var app = angular.module('WeatherApp', [])
       }
     };      
 
-    // On load show London weather by default
-    openWeatherMap.getWeatherByCityName('london').then(function (result) {
-    	console.log(result)
-      $scope.forecast = result;
-      $scope.validData = true;
-    }, function (result) { // on failure
-    	console.log("failaure " + result)
-      $scope.message = SERVER_ERROR;
-    });
-
-
     // Get forecast info by location
     $scope.getForecastByLocation = function() {
-
-      if (angular.isUndefined($scope.location)) {
+      if (angular.isUndefined($scope.location) || $scope.location.length == 0) {
         $scope.message = PROVIDE_LOC;
         return;
       }
 
-      // Get weather by city name
-      openWeatherMap.getWeatherByCityName($scope.location).then(function (result) {
-        $scope.forecast = result;
-        $scope.message = '';
-        $scope.validData = true;
-      }, function (result) { // on failure
-        $scope.message = SERVER_ERROR;
-
-      });
+      getWeatherByCityName($scope.location)
     };
 
-  }])
-.service('openWeatherMap', ['$http', function ($http) {
+
+	var getWeatherByCityName = function(location) {
+	  // Get weather by city name
+	  openWeatherMapService.getWeatherByCityName($scope.location).then(function (result) {
+	    $scope.forecast = result;
+	    $scope.message = '';
+	    $scope.validData = true;
+	  }, function (result) { // on failure
+	    $scope.message = SERVER_ERROR;
+
+	  });
+	} 
+
+    // On load show London weather by default
+    getWeatherByCityName('london');
+
+
+
+
+  });
+app.service('openWeatherMapService', ['$http', function ($http)  {
     var apiKey = 'a8b0a31ffefce9140bbd7dea8abb1903';
     var apiUrl = 'http://api.openweathermap.org/data/2.5/';
     var openweathermapFactory = {};
@@ -63,4 +61,4 @@ var app = angular.module('WeatherApp', [])
             });
     };    
     return openweathermapFactory;
-}]) 
+});

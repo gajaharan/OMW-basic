@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gaj 5 Day Weather</title>
+<title>5 Day Weather</title>
 
   <meta name="viewport" content="width=device-width, user-scalable=no">
 
   <link rel="stylesheet" href="bundle/vendor.css" />
   <link rel="stylesheet" href="bundle/styles.css" />
 
+  <script src="bundle/vendor.js"></script>
+  <script src="bundle/bundle.js"></script>  
+
 </head>
 
 <body ng-app="WeatherApp">
 
-<div class="container" ng-controller="forecastCtrl">
+<div class="container" ng-controller="forecastController">
     <div class="search-weather">
         <div class="row">
             <div class="col-xs-12">
@@ -44,7 +47,7 @@
 				<div class="weather-container">
 				    <div class="info-body">
 				        <div class="day-title">{{parseDate(dailyForecast.dt)}}</div>
-				        <img class="space" ng-src="{{getIconUrl(dailyForecast.weather[0].icon)}}" />
+				        <img class="space" src="{{getIconUrl(dailyForecast.weather[0].icon)}}" />
 				        <div class="space">{{dailyForecast.temp.day | number: 1}}&#176;C</div>
 				        <div class="space">{{dailyForecast.weather[0].description}}</div>
 				        <div class="space">H: {{dailyForecast.temp.max}}&#176;C&nbsp;</div>
@@ -55,10 +58,6 @@
         </div>
     </div>
 </div>
-
-  <script src="bundle/vendor.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <script src="bundle/bundle.js"></script>
 
 </body>
 
