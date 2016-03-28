@@ -1,5 +1,5 @@
-angular.module('WeatherApp')
-.controller('forecastController', ['$scope','$filter', 'openWeatherMapService', function($scope,$filter, openWeatherMapService) {
+angular.module('weatherApp')
+.controller('ForecastCtrl', ['$scope','$filter', 'OpenWeatherMap', function($scope,$filter, OpenWeatherMap) {
     var PROVIDE_LOC = '! Please provide a location';
     var SERVER_ERROR = '! Unable to get weather information. Please try again later.'
     $scope.message = '';
@@ -33,7 +33,7 @@ angular.module('WeatherApp')
 
 	var getWeatherByCityName = function(location) {
 	  // Get weather by city name
-	  openWeatherMapService.getWeatherByCityName(location).then(function (result) {
+	  OpenWeatherMap.getWeatherByCityName(location).then(function (result) {
 	    $scope.forecast = result;
 	    $scope.message = '';
 	    $scope.validData = true;
