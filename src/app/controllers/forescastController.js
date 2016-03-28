@@ -1,4 +1,5 @@
-app.controller('forecastController', ['$scope','$filter', 'openWeatherMapService', function($scope,$filter, openWeatherMapService) {
+angular.module('WeatherApp')
+.controller('forecastController', ['$scope','$filter', 'openWeatherMapService', function($scope,$filter, openWeatherMapService) {
     var PROVIDE_LOC = '! Please provide a location';
     var SERVER_ERROR = '! Unable to get weather information. Please try again later.'
     $scope.message = '';

@@ -1,4 +1,5 @@
-app.service('openWeatherMapService', ['$http', function ($http)  {
+angular.module('WeatherApp')
+.service('openWeatherMapService', ['$http', function ($http)  {
     var apiKey = 'a8b0a31ffefce9140bbd7dea8abb1903';
     var apiUrl = 'http://api.openweathermap.org/data/2.5/';
     var openweathermapFactory = {};
