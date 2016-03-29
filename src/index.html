@@ -21,7 +21,7 @@
                         <span>
                             <input type="text" class="search-input" id="location" placeholder="Your city name" ng-model="weather.location">
                         </span>
-                        <button type="submit" class="search-btn" ng-click="weather.getForecastByLocation()">Search</button>
+                        <button type="submit" class="search-btn" ng-click="weather.getForecastByLocation(location)">Search</button>
                         <span  class="information" ng-show="weather.message">{{weather.message}}</span>
                     </form>
                 </div>
@@ -40,17 +40,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12" ng-repeat="dailyForecast in weather.forecast.list">
-				<div class="weather-container">
-				    <div class="info-body">
-				        <div class="day-title">{{weather.parseDate(dailyForecast.dt)}}</div>
-				        <img class="space" src="{{weather.getIconUrl(dailyForecast.weather[0].icon)}}" />
-				        <div class="space">{{dailyForecast.temp.day | number: 1}}&#176;C</div>
-				        <div class="space">{{dailyForecast.weather[0].description}}</div>
-				        <div class="space">H: {{dailyForecast.temp.max}}&#176;C&nbsp;</div>
-				        <div class="space">L: {{dailyForecast.temp.min}}&#176;C</div>
-				    </div>
-				</div>
+            <div class="col-sm-12" ng-repeat="forecastItem in weather.forecast.list">
+                <div weather-info forecast="forecastItem" />
             </div>
         </div>
     </div>

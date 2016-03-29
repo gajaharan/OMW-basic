@@ -1,0 +1,10 @@
+<div class="weather-container">
+    <div class="info-body">
+        <div class="day-title">{{parseDate(dailyForecast.dt)}}</div>
+        <img class="space" src="{{getIconUrl(dailyForecast.weather[0].icon)}}" />
+        <div class="space">{{dailyForecast.temp.day | number: 1}}&#176;C</div>
+        <div class="space">{{dailyForecast.weather[0].description}}</div>
+        <div class="space">H: {{dailyForecast.temp.max}}&#176;C&nbsp;</div>
+        <div class="space">L: {{dailyForecast.temp.min}}&#176;C</div>
+    </div>
+</div>
