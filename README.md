@@ -1,6 +1,6 @@
 # Angular JS Best Practice using Open Weather Maps API
 
-
+follow the tutorial [here](https://www.youtube.com/playlist?list=PL8hW76UzIRzOOryby7j3nTxRa3YTHAeKZ)
 
 ## Installation
 
@@ -24,7 +24,7 @@ $ bower install
     $ gulp unit-test
 ```
 
-## Run the app using gulp. 
+## Run the app using gulp.
 Using the following command. This will automatically open a new browers on your [localhost:8000](http://localhost:8000) address.
 ```
     $ gulp
